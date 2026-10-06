@@ -38,6 +38,7 @@ function comidasenfuncion(){
 }
 */
 function mostarlasomidasconforeach(){
+  container.innerHTML = ""
   comidas.forEach(comida => {
 
     let lista = comida.ingredientes
@@ -57,3 +58,15 @@ function mostarlasomidasconforeach(){
 
   })
 }
+
+const agregarcomidaform = document.getElementById('agregarcomida');
+agregarcomidaform.addEventListener("submit",(event) => {
+  //alert("Comida agregada: " + event.target.nombre.value)
+  let comidanueva = {
+    nombre: event.target.nombre.value,
+    provincia:"",
+    categoria:""
+  }
+  comidas.push(comidanueva)
+  mostarlasomidasconforeach()
+})
