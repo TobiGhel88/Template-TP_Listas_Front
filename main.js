@@ -38,8 +38,11 @@ function comidasenfuncion(){
 }
 */
 function mostarlasomidasconforeach(){
-  container.innerHTML = ""
+  container.innerHTML = "";
+
   comidas.forEach(comida => {
+
+    console.log(comida.ingredientes)
 
     let lista = comida.ingredientes
     let listita = ""
@@ -62,11 +65,15 @@ function mostarlasomidasconforeach(){
 const agregarcomidaform = document.getElementById('agregarcomida');
 agregarcomidaform.addEventListener("submit",(event) => {
   //alert("Comida agregada: " + event.target.nombre.value)
+  event.preventDefault()
   let comidanueva = {
     nombre: event.target.nombre.value,
-    provincia:"",
-    categoria:""
+    provincia: event.target.provincia.value,
+    categoria: event.target.categoria.value,
+    ingredientes: event.target.ingredientes.value.split(", ") 
   }
   comidas.push(comidanueva)
   mostarlasomidasconforeach()
+  console.log(comidanueva)
+  event.target.reset()
 })
